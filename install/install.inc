@@ -21,15 +21,15 @@
 global $VAR, $_SERVER, $HTTP_SERVER_VARS;
 
 # get the file path
-if (is_file($_SERVER["PATH_TRANSLATED"])) {
+if (is_file(@$_SERVER["PATH_TRANSLATED"])) {
 	$path = $_SERVER["PATH_TRANSLATED"];
 } elseif (is_file($HTTP_SERVER_VARS["SCRIPT_FILENAME"])) {
 	$path = $HTTP_SERVER_VARS["SCRIPT_FILENAME"];
 } else {
 	$path = PATH_AGILE;
 }
-$path = eregi_replace('index.php', '', $path);
-$path = eregi_replace("[\\\\]", '/', $path);
+$path = @eregi_replace('index.php', '', $path);
+$path = @eregi_replace("[\\\\]", '/', $path);
 
 # Get the current IP & Domain 
 if(isset($_SERVER)) {
